@@ -1,11 +1,17 @@
 // Extract guest name from URL path and update invitation
 function setGuestName() {
     const path = window.location.pathname;
-    const guestName = path.split('/').pop(); // Get the last part of the path
+    let guestName = path.split('/').pop(); // Get the last part of the path
     
     if (guestName && guestName !== '' && guestName !== 'index.html') {
-        // Capitalize first letter and format the name
-        const formattedName = guestName.charAt(0).toUpperCase() + guestName.slice(1).toLowerCase();
+        // Replace hyphens and underscores with spaces, then decode URL encoding
+        guestName = decodeURIComponent(guestName.replace(/[-_]/g, ' '));
+        
+        // Capitalize each word (first letter of each word)
+        const formattedName = guestName.split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+            .join(' ');
+            
         document.getElementById('guest-name').textContent = formattedName;
         // Pre-fill the name field in the form
         document.getElementById('name').value = formattedName;
