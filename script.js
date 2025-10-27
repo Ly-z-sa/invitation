@@ -20,10 +20,15 @@ function setGuestName() {
         // Replace hyphens and underscores with spaces, then decode URL encoding
         guestName = decodeURIComponent(guestName.replace(/[-_]/g, ' '));
         
+        // Capitalize each word (first letter of each word)
+        const formattedName = guestName.split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+            .join(' ');
+        
         // Check if guest is authorized
         if (!authorizedGuests.includes(guestName.toLowerCase())) {
             document.querySelector('h1').textContent = "You're NOT Invited:";
-            document.getElementById('guest-name').textContent = formattedName || 'Random Person';
+            document.getElementById('guest-name').textContent = formattedName;
             document.getElementById('rsvp-button').style.display = 'none';
             document.getElementById('message-box').textContent = '🚫 Sorry, this invitation is exclusive! You\'re not on the guest list.';
             document.getElementById('message-box').style.display = 'block';
@@ -32,11 +37,6 @@ function setGuestName() {
             document.getElementById('message-box').style.fontWeight = 'bold';
             return;
         }
-        
-        // Capitalize each word (first letter of each word)
-        const formattedName = guestName.split(' ')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-            .join(' ');
             
         document.getElementById('guest-name').textContent = formattedName;
         document.getElementById('name').value = formattedName;
