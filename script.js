@@ -1,11 +1,34 @@
+// Authorized guest list (add your actual guest names here)
+const authorizedGuests = [
+    'lyssa phat',
+    'yuki tsunoda',
+    'fernando alonso',
+    'lewis hamilton',
+    'oscar piastri',
+    'lando norris',
+    'george russell',
+    'sebastian vettel',
+    'sergio perez',
+];
+
 // Extract guest name from URL path and update invitation
 function setGuestName() {
     const path = window.location.pathname;
-    let guestName = path.split('/').pop(); // Get the last part of the path
+    let guestName = path.split('/').pop();
     
     if (guestName && guestName !== '' && guestName !== 'index.html') {
         // Replace hyphens and underscores with spaces, then decode URL encoding
         guestName = decodeURIComponent(guestName.replace(/[-_]/g, ' '));
+        
+        // Check if guest is authorized
+        if (!authorizedGuests.includes(guestName.toLowerCase())) {
+            document.getElementById('guest-name').textContent = 'Unauthorized Guest';
+            document.getElementById('rsvp-button').style.display = 'none';
+            document.getElementById('message-box').textContent = 'This invitation link is not valid. Please contact the host.';
+            document.getElementById('message-box').style.display = 'block';
+            document.getElementById('message-box').style.color = '#ef4444';
+            return;
+        }
         
         // Capitalize each word (first letter of each word)
         const formattedName = guestName.split(' ')
@@ -13,7 +36,6 @@ function setGuestName() {
             .join(' ');
             
         document.getElementById('guest-name').textContent = formattedName;
-        // Pre-fill the name field in the form
         document.getElementById('name').value = formattedName;
     }
 }
