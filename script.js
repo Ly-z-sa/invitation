@@ -9,6 +9,9 @@ const authorizedGuests = [
     'george russell',
     'sebastian vettel',
     'sergio perez',
+    'sopanha rath',
+    'sokunkeo cheathourn'
+
 ];
 
 // Extract guest name from URL path and update invitation
