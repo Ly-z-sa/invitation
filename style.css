@@ -1,0 +1,288 @@
+/* Base styles for the body, including the vibrant gradient background and scrollbar hiding */
+body {
+    font-family: 'Bebas Neue', sans-serif; /* Apply Bebas Neue as the primary font */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Vibrant gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto; /* Enable vertical scrolling */
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+/* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Main container styling: white background, shadow, rounded corners, and initial animation */
+.container {
+    background-color: #ffffff;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    max-width: 1200px; /* Max width for the card */
+    width: 100%;
+    min-height: 600px; /* Adjusted minimum height to reduce white space */
+    display: flex;
+    flex-direction: row; /* Default to row layout for larger screens */
+    align-items: center; /* Vertically center items within the container */
+    padding: 3rem; /* Internal padding */
+    text-align: left;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInSlideUp 1s ease-out forwards; /* Entry animation */
+    animation-delay: 0.3s;
+    gap: 2rem; /* Gap between main columns */
+}
+
+/* Styling for the column containing the movie poster */
+.poster-column {
+    flex: 0 1 auto; /* Don't grow, take natural width, allow shrinking */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Vertically center the poster */
+}
+
+/* Movie poster image styling */
+.movie-poster {
+    width: 100%;
+    max-width: 300px; /* Max width for the poster */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for the column containing invitation info and the RSVP form */
+.info-form-column {
+    flex: 1 1 auto; /* Grow to take available space */
+    display: flex;
+    flex-direction: row; /* Changed to row for side-by-side layout on larger screens */
+    gap: 3rem; /* Increased gap between info and form for more space */
+    justify-content: flex-start; /* Align content to the start */
+    align-items: center; /* Vertically center the info and form */
+}
+
+/* Styling for the invitation text section */
+.invitation-info {
+    flex: 1 1 50%; /* Allow it to grow and take 50% width */
+    padding-right: 2rem; /* Space from the right edge on larger screens */
+    text-align: left; /* Aligned text content to the left */
+}
+
+/* Heading styles */
+.invitation-info h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #374151; /* Dark gray text */
+    margin-bottom: 1.5rem; /* Increased margin */
+    line-height: 1; /* Adjust line height for Bebas Neue */
+}
+
+.invitation-info h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #4f46e5; /* Indigo text */
+    margin-bottom: 2.2rem; /* Increased margin */
+    line-height: 1;
+}
+
+/* Paragraph text styles */
+.invitation-info p {
+    font-size: 1.1rem;
+    color: #4b5563; /* Medium gray text */
+    line-height: 1.6;
+    margin-bottom: 1.5rem; /* Increased margin */
+}
+
+/* Specific style for the movie title */
+.invitation-info #movie-title {
+    color: #e11d48; /* Red color for emphasis */
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem; /* Increased margin */
+    line-height: 1;
+}
+
+/* Button styling */
+.btn {
+    background-color: #4f46e5; /* Indigo button */
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 0.75rem; /* Rounded corners */
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(79, 70, 229, 0.4); /* Enhanced shadow */
+    display: inline-block; /* Allows padding and margin to work correctly */
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+.btn:hover {
+    background-color: #4338ca; /* Darker indigo on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.5);
+}
+
+/* RSVP form styling */
+#rsvp-form {
+    flex: 1 1 50%; /* Allow it to grow and take 50% width */
+    max-width: 350px; /* Max width for the form */
+    margin-top: 0; /* No top margin when side-by-side */
+    padding-top: 0; /* Removed padding-top to fix misalignment */
+    text-align: left; /* Aligned text content to the left */
+}
+
+#rsvp-form h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #374151;
+    margin-bottom: 1.8rem; /* Increased margin */
+    line-height: 1;
+}
+
+/* Form group (label + input) styling */
+.form-group {
+    margin-bottom: 1.5rem; /* Increased margin */
+    width: 100%;
+    display: flex; /* Make form-group a flex container */
+    flex-direction: column; /* Stack label and input vertically */
+    align-items: flex-start; /* Aligned items to the start (left) within form-group */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.6rem; /* Increased margin */
+    font-weight: 600;
+    color: #374151;
+}
+
+/* Input field styling */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db; /* Light gray border */
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: #374151;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Input focus styling */
+.form-group input:focus {
+    outline: none;
+    border-color: #6366f1; /* Indigo focus border */
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25); /* Soft focus shadow */
+}
+
+/* Message box styling (for success/error messages) */
+.message-box {
+    background-color: #d1fae5; /* Light green for success */
+    color: #065f46; /* Dark green text */
+    padding: 1rem;
+    border-radius: 0.75rem;
+    margin-top: 1.5rem;
+    font-weight: 500;
+    text-align: left;
+    width: 100%;
+    animation: fadeIn 0.5s ease-out forwards;
+    display: none; /* Hidden by default */
+}
+
+.message-box.error {
+    background-color: #fee2e2; /* Light red for error */
+    color: #991b1b; /* Dark red text */
+}
+
+/* 3D car container */
+.car-3d {
+    display: block; /* Default to block for larger screens */
+    flex: 0 1 300px; /* Fixed width for the 3D model on larger screens */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Model viewer specific styling */
+model-viewer {
+    width: 100%;
+    height: 400px; /* Adjust height as needed */
+    --poster-color: transparent; /* Hide poster background */
+    --progress-bar-color: #4f46e5; /* Progress bar color */
+}
+
+/* Keyframe animations */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments for screens smaller than 1024px (e.g., tablets and mobile) */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column; /* Stack columns vertically */
+        align-items: center; /* Center items horizontally */
+        padding: 2rem; /* Adjusted padding */
+        text-align: center; /* Center text */
+        min-height: auto; /* Allow height to adjust based on content */
+        gap: 2rem; /* Gap between stacked sections */
+    }
+
+    .poster-column {
+        margin-bottom: 1.5rem; /* Space below the poster */
+    }
+
+    .info-form-column {
+        flex-direction: column; /* Stack info and form vertically on smaller screens */
+        align-items: center; /* Center content within this column */
+        padding-right: 0; /* Remove right padding */
+        gap: 1.5rem; /* Smaller gap when stacked */
+    }
+
+    .invitation-info {
+        padding-right: 0; /* Remove right padding */
+        flex: none; /* Remove flex properties when stacked */
+    }
+
+    .invitation-info h1,
+    .invitation-info h2,
+    .invitation-info #movie-title,
+    .invitation-info p {
+        text-align: center; /* Center text within info section */
+    }
+
+    #rsvp-form {
+        max-width: 100%; /* Allow form to take full width */
+        margin-top: 0; /* Adjust margin */
+        flex: none; /* Remove flex properties when stacked */
+    }
+
+    .car-3d {
+        margin-top: 2rem; /* Space above the 3D car when stacked */
+        width: 100%; /* Full width for the 3D car */
+    }
+
+    model-viewer {
+        height: 300px; /* Shorter height for 3D model on smaller screens */
+    }
+}
