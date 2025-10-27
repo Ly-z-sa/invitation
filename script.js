@@ -30,7 +30,7 @@ function setGuestName() {
             document.querySelector('h1').textContent = "You're NOT Invited:";
             document.getElementById('guest-name').textContent = formattedName;
             document.getElementById('rsvp-button').style.display = 'none';
-            document.getElementById('message-box').textContent = '🚫 Sorry, this invitation is exclusive! You\'re not on the guest list.';
+            document.getElementById('message-box').textContent = 'Sorry, this invitation is exclusive! You\'re not on the guest list.';
             document.getElementById('message-box').style.display = 'block';
             document.getElementById('message-box').style.color = '#ef4444';
             document.getElementById('message-box').style.fontSize = '1.1rem';
