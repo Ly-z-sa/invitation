@@ -22,11 +22,14 @@ function setGuestName() {
         
         // Check if guest is authorized
         if (!authorizedGuests.includes(guestName.toLowerCase())) {
-            document.getElementById('guest-name').textContent = 'Unauthorized Guest';
+            document.querySelector('h1').textContent = "You're NOT Invited:";
+            document.getElementById('guest-name').textContent = formattedName || 'Random Person';
             document.getElementById('rsvp-button').style.display = 'none';
-            document.getElementById('message-box').textContent = 'This invitation link is not valid. Please contact the host.';
+            document.getElementById('message-box').textContent = '🚫 Sorry, this invitation is exclusive! You\'re not on the guest list.';
             document.getElementById('message-box').style.display = 'block';
             document.getElementById('message-box').style.color = '#ef4444';
+            document.getElementById('message-box').style.fontSize = '1.1rem';
+            document.getElementById('message-box').style.fontWeight = 'bold';
             return;
         }
         
